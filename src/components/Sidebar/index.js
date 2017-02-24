@@ -24,7 +24,7 @@ const menuItems = [
 class Sidebar extends Component {
   render() {
     return (
-      <div className="sidebar">
+      <div className="sidebar sidebar-shadow">
         <SidebarHeader />
         <SidebarMenu menuItems={menuItems} />
       </div>

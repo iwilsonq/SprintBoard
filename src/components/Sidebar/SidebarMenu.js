@@ -26,7 +26,6 @@ class SidebarMenu extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <ul className="sidebar-menu">
         {this.props.menuItems.map(item => (
