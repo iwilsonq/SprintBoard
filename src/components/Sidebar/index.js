@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import SidebarHeader from './SidebarHeader';
 import SidebarMenu from './SidebarMenu';
 
@@ -25,7 +26,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar sidebar-shadow">
-        <SidebarHeader />
+        <SidebarHeader time={moment().format('LT')} date={moment().format('dddd[,] MMM[.] D')} />
         <SidebarMenu menuItems={menuItems} />
       </div>
     );

@@ -4,7 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 import reducer from './reducers';
-import App from './components/App';
+import Routes from './routes';
 
 import '../styles/main.sass';
 
@@ -16,7 +16,7 @@ const store = createStore(
 
 render(
   <Provider store={store}>
-    <App />
+    <Routes />
   </Provider>,
   document.getElementById('root')
 );

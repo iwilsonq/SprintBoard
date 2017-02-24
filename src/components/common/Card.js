@@ -1,13 +1,16 @@
 import React from 'react';
 import CardHeader from './CardHeader';
-import CardSection from './CardSection';
+import CardFooter from './CardFooter';
 
 const Card = props => {
   return (
     <div className="card">
       <CardHeader />
-      a card
-      <CardSection />
+        <p>Category</p>
+        <h3>Statistic / Feature</h3>
+      <CardFooter>
+        <p>I am the card footer</p>
+      </CardFooter>
     </div>
   );
 };

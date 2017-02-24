@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from './Sidebar/';
-import Landing from './Landing/';
+import Landing from './Landing';
 import * as Com from './common/';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       <div id="app">
         <Sidebar />
         <Landing>
-          <Com.Card />
+          {React.cloneElement(this.props.children, this.state)}
         </Landing>
       </div>
     );
