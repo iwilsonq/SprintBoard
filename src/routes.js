@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
 import SprintBoard from './components/SprintBoard';
+
 const Routes = () => {
   return (
     <Router history={browserHistory}>
