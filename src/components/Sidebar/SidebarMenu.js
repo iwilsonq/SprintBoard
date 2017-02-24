@@ -6,12 +6,12 @@ class SidebarMenu extends Component {
     super(props);
 
     this.state = {
-      activeMenuItem: 'SprintBoard'
+      activeMenuItem: props.menuItems[0].name
     };
   }
 
-  onMenuItemClick(item) {
-    this.setState({ activeMenuItem: item });
+  componentDidMount() {
+    document.querySelector('.sidebar-menu').firstChild.classList.add('active');
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -21,7 +21,12 @@ class SidebarMenu extends Component {
     }
   }
 
+  onMenuItemClick(item) {
+    this.setState({ activeMenuItem: item });
+  }
+
   render() {
+    console.log(this.state);
     return (
       <ul className="sidebar-menu">
         {this.props.menuItems.map(item => (
