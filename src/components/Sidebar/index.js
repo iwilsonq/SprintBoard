@@ -6,19 +6,23 @@ import SidebarMenu from './SidebarMenu';
 const menuItems = [
   {
     name: 'SprintBoard',
-    icon: 'dashboard'
+    icon: 'dashboard',
+    path: '/'
   },
   {
     name: 'Tasks',
-    icon: 'check'
+    icon: 'check',
+    path: '/tasks'
   },
   {
     name: 'Notifications',
-    icon: 'notifications'
+    icon: 'notifications',
+    path: '/notifications'
   },
   {
     name: 'Subscribers',
-    icon: 'email'
+    icon: 'email',
+    path: '/subscribers'
   },
 ];
 
@@ -26,8 +30,14 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="sidebar sidebar-shadow">
-        <SidebarHeader time={moment().format('LT')} date={moment().format('dddd[,] MMM[.] D')} />
-        <SidebarMenu menuItems={menuItems} />
+        <SidebarHeader
+          time={moment().format('LT')}
+          date={moment().format('dddd[,] MMM[.] D')}
+       />
+        <SidebarMenu
+          activeRoute={this.props.route}
+          menuItems={menuItems}
+        />
       </div>
     );
   }

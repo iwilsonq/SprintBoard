@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeRoute } from '../../actions';
 import SidebarMenuItem from './SidebarMenuItem';
 
 class SidebarMenu extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeMenuItem: props.menuItems[0].name
-    };
-  }
-
   componentDidMount() {
-    document.querySelector('.sidebar-menu').firstChild.classList.add('active');
+    document.querySelector('.sidebar-menu')
+    .firstChild.firstChild.classList.add('active');
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.state.activeMenuItem !== nextState.activeMenuItem) {
-      document.querySelector(`[name=${this.state.activeMenuItem}]`).classList.remove('active');
-      document.querySelector(`[name=${nextState.activeMenuItem}]`).classList.add('active');
+    if (this.props.activeRoute !== nextProps.activeRoute) {
+      document.querySelector(`[name=${this.props.activeRoute.name}]`).classList.remove('active');
+      document.querySelector(`[name=${nextProps.activeRoute.name}]`).classList.add('active');
     }
   }
 
   onMenuItemClick(item) {
-    this.setState({ activeMenuItem: item });
+    const { name, path } = item;
+    this.props.changeRoute({
+      name,
+      path
+    });
   }
 
   render() {
@@ -30,7 +29,7 @@ class SidebarMenu extends Component {
       <ul className="sidebar-menu">
         {this.props.menuItems.map(item => (
           <SidebarMenuItem
-            onClick={this.onMenuItemClick.bind(this, item.name)}
+            onClick={this.onMenuItemClick.bind(this, item)}
             key={item.name}
             {...item}
           />
@@ -40,4 +39,4 @@ class SidebarMenu extends Component {
   }
 };
 
-export default SidebarMenu;
+export default connect(null, { changeRoute })(SidebarMenu);

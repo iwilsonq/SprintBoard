@@ -6,7 +6,7 @@ class Landing extends Component {
     return (
       <div className="landing container" style={{ marginLeft: 195}}>
         <LandingHeader>
-          <h1 className="lightfont">SprintBoard</h1>
+          <h1 className="lightfont">{this.props.route.name}</h1>
         </LandingHeader>
         {this.props.children}
       </div>
