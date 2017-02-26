@@ -5,35 +5,35 @@ const SprintBoard = props => {
   return (
     <div className="sprintboard">
       <div className="row">
-        <div className="col s6">
+        <div className="col l6">
           <Card category="Category" title="Statistic or Feature" />
         </div>
-        <div className="col s6">
-          <Card category="Category" title="Statistic or Feature" />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col s4">
-          <Card category="Category" title="Statistic or Feature" />
-        </div>
-        <div className="col s4">
-          <Card category="Category" title="Statistic or Feature" />
-        </div>
-        <div className="col s4">
+        <div className="col l6">
           <Card category="Category" title="Statistic or Feature" />
         </div>
       </div>
       <div className="row">
-        <div className="col s3">
+        <div className="col l4">
           <Card category="Category" title="Statistic or Feature" />
         </div>
-        <div className="col s3">
+        <div className="col l4">
           <Card category="Category" title="Statistic or Feature" />
         </div>
-        <div className="col s3">
+        <div className="col l4">
           <Card category="Category" title="Statistic or Feature" />
         </div>
-        <div className="col s3">
+      </div>
+      <div className="row">
+        <div className="col l3">
+          <Card category="Category" title="Statistic or Feature" />
+        </div>
+        <div className="col l3">
+          <Card category="Category" title="Statistic or Feature" />
+        </div>
+        <div className="col l3">
+          <Card category="Category" title="Statistic or Feature" />
+        </div>
+        <div className="col l3">
           <Card category="Category" title="Statistic or Feature" />
         </div>
       </div>

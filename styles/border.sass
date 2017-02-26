@@ -1,0 +1,8 @@
+.no-border
+  border: none !important
+
+$sides: top right bottom left
+
+@each $side in $sides
+  .border-#{$side}
+    border-#{$side}: 1px solid black 

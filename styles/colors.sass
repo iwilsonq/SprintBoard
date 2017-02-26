@@ -1,6 +1,4 @@
 $red: #DB3400
-$red2: #DC6642
-$red3: #DC876E
 
 $tan: #FEE49A
 $tan2: #FFECB5
@@ -22,8 +20,11 @@ $lightGrey: #F4F4F4
 $darkGrey: #DCDCDC
 $white: #fff
 
-.red
-  background-color: $red
+@for $i from 0 through 5
+  .red-#{$i}
+    background-color: lighten($red, $i * 10)
+
+
 .tan
   background-color: $tan
   color: $mainText !important

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Sidebar from './Sidebar/';
-import Landing from './Landing';
-import * as Com from './common/';
+import { Sidebar } from './Sidebar';
+import { Landing } from './Landing';
 
 class App extends Component {
   render() {
