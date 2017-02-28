@@ -1,95 +1,42 @@
 import React, { Component } from 'react';
-
-const success = successMsg => {
-  console.log(successMsg);
-};
-
-const error = errorMsg => {
-  console.log(errorMsg);
-};
+import { connect } from 'react-redux';
+import { createBoard } from '../../actions';
 
 class Tasks extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state =  {
-      boards: [],
-      lists: []
-    };
+  createBoard() {
+    this.props.createBoard(this.refs.board.value);
   }
 
-  componentDidMount() {
-    Trello.authorize({
-      type: 'popup',
-      name: 'Getting Started Application',
-      scope: {
-        read: 'true',
-        write: 'true' },
-      expiration: 'never',
-      success: () => console.log('Auth Success'),
-      error: () => console.log('Auth Error')
-    });
-
-    this.getBoards();
-    this.getLists();
-  }
-
-  getBoards() {
-    Trello.get('/member/me/boards', successResponse => {
-      this.setState({ boards: successResponse });
-    }, error);
-  }
-
-  getLists(id) {
-    Trello.get('/boards/5792ea91772896d797b0b871/lists', successResponse => {
-      this.setState({ lists: successResponse });
-    }, error);
-  }
-
-  renderBoard() {
-    const { boards } = this.state;
-    if (!boards.length) {
-      return null;
-    }
-
-    return (
-      <div
-        className="board"
-        style={{
-          backgroundColor: boards[3].prefs.background,
-          color: '#fff'
-        }}
-      >
-        <h1>{boards[3].name}</h1>
-        <div className="board-lists">
-          {this.renderLists()}
-        </div>
-      </div>
-    );
-  }
-
-  renderLists() {
-
-
-    return this.state.lists.map((list, i) => {
+  renderBoards() {
+    return this.props.boards.map(board => {
       return (
-        <div key={list.id} className="list">
-          {list.name}
+        <div className="board red-1">
+          {board.name}
         </div>
       );
-    });
+    })
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="tasks container">
         <div className="row">
-          {this.renderBoard()}
+          <label>Create new board</label><br/>
+          <input ref="board" type="text"/><br/>
+          <button onClick={this.createBoard.bind(this)}>Create</button>
+        </div>
+        <div className="row">
+          {this.renderBoards()}
         </div>
       </div>
     );
   }
 }
 
-export default Tasks;
+const mapStateToProps = state => {
+  return {
+    boards: state.task
+  };
+}
+
+export default connect(mapStateToProps, { createBoard })(Tasks);
